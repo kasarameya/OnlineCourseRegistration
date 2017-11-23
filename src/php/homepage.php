@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "</tr>";
         }
         echo "</table>";
-        echo "<button id='AddCart'>Add to CArt</button>";
+        echo "<button id='AddCart'>Add to Cart</button>";
         echo "</form>";
 
     }
