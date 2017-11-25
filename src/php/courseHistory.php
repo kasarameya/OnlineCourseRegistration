@@ -1,3 +1,8 @@
+<?php
+include 'connection.php';
+session_start();
+$session_username = $_SESSION['username'];
+?>
 <html lang="en">
 <head>
     <title>Course History</title>
@@ -6,10 +11,6 @@
 <body>
   <section>
     <?php
-    include 'connection.php';
-    session_start();
-    $session_username = $_SESSION['username'];
-    <h2>Course History</h2>
       $pastCoursesSql="CALL show_my_history('$session_username',0)";
       $result2=mysqli_query($conn, $pastCoursesSql);
       if (mysqli_num_rows($result2) > 0) {
@@ -35,7 +36,6 @@
     }else {
       echo "<h4>Your cart is empty.</h4>";
     }
-
   ?>
   </section>
 </body>

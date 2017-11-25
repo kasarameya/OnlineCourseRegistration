@@ -22,10 +22,13 @@ $session_username = $_SESSION['username'];
        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
      </li>
      <li class="nav-item active">
-       <a class="nav-link" href="#">Register Course</a>
+       <a class="nav-link" href="#">Enroll</a>
      </li>
      <li class="nav-item active">
-       <a class="nav-link" href="#">Drop Course</a>
+       <a class="nav-link" href="courseHistory.php">Course History</a>
+     </li>
+     <li class="nav-item active">
+       <a class="nav-link" href="dropCourses.php">Drop Course</a>
      </li>
      <li class="nav-item active">
        <a class="nav-link" href="myCart.php">My Cart</a>

@@ -34,11 +34,11 @@
         }
       echo "</table>";
     }else {
-      echo "Wrong Db :".mysqli_error($conn);
+      echo "You have not enroll in any class :".mysqli_error($conn);
     }
 
     ?>
 
-    </section
+  </section>
 </body>
 </html>
