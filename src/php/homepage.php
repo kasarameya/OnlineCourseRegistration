@@ -8,13 +8,11 @@ else{
   header("location:login.html");
   exit();
 }
-
 ?>
 <html lang="en">
 <head>
     <title>Online Course Registration</title>
     <link type="text/css" rel="stylesheet" href="../css/common.css" />
-    <link type="text/css" rel="stylesheet" href="../css/custom.scss" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -99,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "<td>" . $row['instructor_id'] . "</td>";
             echo "<td> " . $row['name'] . "</td>";
             echo "<td>" . $row['semester'] . "</td>";
-            echo "<td>" . $row['available_seats'] . "</td>";
+            echo "<td>" . $row['remaining_seats'] . "</td>";
             echo "<td> <input type='checkbox' value='$course' name='checkbox1[]'> </td>";
             echo "</tr>";
         }

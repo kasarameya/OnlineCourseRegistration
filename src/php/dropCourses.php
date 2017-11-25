@@ -1,27 +1,41 @@
+<?php
+include 'connection.php';
+session_start();
+if(isSet($_SESSION['username'])){
+  $session_username = $_SESSION['username'];
+}
+else{
+  header("location:login.html");
+  exit();
+}
+?>
 <html lang="en">
 <head>
     <title>Drop Courses</title>
     <link type="text/css" rel="stylesheet" href="../css/common.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 <body>
-  <section>
-    <?php
-    include 'connection.php';
-    session_start();
-    $session_username = $_SESSION['username'];
+  <?php include 'menu.php'; ?>
+    <div id="homepage_container" class="container">
+<?php
     echo "<h2>Courses Enrolled for the Next Semester</h2>";
 
     $futureCoursesSql="CALL show_my_history('$session_username',1)";
     $result=mysqli_query($conn, $futureCoursesSql);
     if (mysqli_num_rows($result) > 0) {
-      echo "<table>
-        <tr>
+      echo "  <table class='table'>
+         <thead class='bg-primary'>
+          <tr class='text-white'>
           <th>Course_id</th>
           <th>Instructor_id</th>
           <th>Instructor Name</th>
           <th>Semester</th>
           <th>Drop</th>
-        </tr>";
+        </tr></thead>";
 
         while ($row = mysqli_fetch_assoc($result)) {
           echo "<tr>";
@@ -34,11 +48,11 @@
         }
       echo "</table>";
     }else {
-      echo "You have not enroll in any class :".mysqli_error($conn);
+      echo "<h4>You have not enroll in any class.</h4>";
     }
 
     ?>
 
-  </section>
+  </div>
 </body>
 </html>
