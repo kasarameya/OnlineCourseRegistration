@@ -7,6 +7,7 @@ $session_username = $_SESSION['username'];
 <head>
     <title>Online Course Registration</title>
     <link type="text/css" rel="stylesheet" href="../css/common.css" />
+      <link type="text/css" rel="stylesheet" href="../css/custom.scss" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +15,7 @@ $session_username = $_SESSION['username'];
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="collapse navbar-collapse">
    <ul class="navbar-nav mr-auto">
      <li class="nav-item active">
@@ -24,12 +25,19 @@ $session_username = $_SESSION['username'];
        <a class="nav-link" href="#">Register Course</a>
      </li>
      <li class="nav-item active">
-       <a class="nav-link" href="#">Cart</a>
-     </li>
-     <li class="nav-item active">
        <a class="nav-link" href="#">Drop Course</a>
      </li>
+     <li class="nav-item active">
+       <a class="nav-link" href="myCart.php">My Cart</a>
+     </li>
    </ul>
+
+   <ul class="navbar-nav">
+
+       <li class="nav-item active">
+         <a class="nav-link" href="#"> Logout </a>
+       </li>
+     </ul>
  </div>
 </nav>
     <div id="homepage_container" class="container">
@@ -71,7 +79,7 @@ $session_username = $_SESSION['username'];
             </div>
           </div>
         </div>
-        <button id="search">Search</button>
+        <button id="search" class="btn btn-primary">Search</button>
 
       </form>
 
@@ -89,26 +97,34 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if (mysqli_num_rows($result2) > 0) {
         echo "<form action='myCart.php' method='POST'>
-        <table>
-          <tr>
-            <th>course_id</th>
-            <th>instructor_id</th>
+        <table class='table'>
+         <thead class='bg-primary'>
+          <tr class='text-white'>
+            <th>Course Name</th>
+            <th>Course Id</th>
+            <th>Instructor Id</th>
+            <th>Instructor Name</th>
             <th>Semester</th>
-            <th>Check</th>
-          </tr>";
+            <th>Availability</th>
+            <th>Enroll</th>
+          </tr>
+          </thead>";
         while ($row = mysqli_fetch_assoc($result2)) {
 
             $course = $row['course_id'] . " " . $inst = $row['instructor_id'] . " " . $row['semester'];
 
-            echo "<tr>";
+            echo "<tr scope='row'>";
+            echo "<td> " . $row['course_name'] . "</td>";
             echo "<td> " . $row['course_id'] . "</td>";
             echo "<td>" . $row['instructor_id'] . "</td>";
+            echo "<td> " . $row['name'] . "</td>";
             echo "<td>" . $row['semester'] . "</td>";
+            echo "<td>" . $row['available_seats'] . "</td>";
             echo "<td> <input type='checkbox' value='$course' name='checkbox1[]'> </td>";
             echo "</tr>";
         }
         echo "</table>";
-        echo "<button id='AddCart'>Add to CArt</button>";
+        echo "<button id='AddCart'  class='btn btn-primary'>Add to Cart</button>";
         echo "</form>";
 
     }
