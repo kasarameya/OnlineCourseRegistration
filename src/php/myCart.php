@@ -1,22 +1,30 @@
 <?php
 include 'connection.php';
 session_start();
-$session_username = $_SESSION['username'];
+if(isSet($_SESSION['username'])){
+  $session_username = $_SESSION['username'];
+}
+else{
+  header("location:login.html");
+  exit();
+}
 ?>
 <html lang="en">
 <head>
     <title>My Cart</title>
     <link type="text/css" rel="stylesheet" href="../css/common.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 <body>
-    <section>
+    <?php include 'menu.php'; ?>
+    <div id="homepage_container" class="container">
         <h2> My Cart</h2>
           <?php
 
           if($_SERVER["REQUEST_METHOD"] == "POST"){
-
 
             $checked_count = count($_POST['checkbox1']);
             if ($checked_count == 0) {
@@ -43,13 +51,15 @@ $session_username = $_SESSION['username'];
 
               if (mysqli_num_rows($result4) > 0) {
                 echo "<form action='enrollCourses.php' method='GET'>
-                <table>
-                  <tr>
+                <table class='table'>
+                <thead class='bg-primary'>
+                 <tr class='text-white'>
                     <th>course_id</th>
                     <th>instructor_id</th>
                     <th>Semester</th>
                     <th>Remove</th>
-                  </tr>";
+                  </tr>
+                  </thead>";
 
                   while ($row = mysqli_fetch_assoc($result4)) {
                     echo "<tr>";
@@ -60,7 +70,7 @@ $session_username = $_SESSION['username'];
                     echo "</tr>";
                   }
                   echo "</table>";
-                  echo "<input type='submit' value='Enroll' id='enroll'></input>";
+                  echo "<input type='submit'  class='btn btn-primary' value='Enroll' id='enroll'></input>";
                   echo "</form>";
               }else {
                 echo "<h4>Your cart is empty.</h4>";
@@ -71,25 +81,27 @@ $session_username = $_SESSION['username'];
           $sql4="SELECT course_id,instructor_id,semester FROM cr_cart WHERE cart_id= '$session_username'";
           $result4=mysqli_query($conn, $sql4);
           if (mysqli_num_rows($result4) > 0) {
+            echo "  <table class='table'>
+              <thead class='bg-primary'>
+               <tr class='text-white'>
+                <th>course_id</th>
+                <th>instructor_id</th>
+                <th>Semester</th>
+                <th>Remove</th>
+              </tr></thead>";
               while ($row = mysqli_fetch_assoc($result4)) {
-                echo "<form action='allCourses.php' method='GET'>
-                <table>
-                  <tr>
-                    <th>course_id</th>
-                    <th>instructor_id</th>
-                    <th>Semester</th>
-                    <th>Remove</th>
-                  </tr>";
+                echo "<form action='enrollCourses.php' method='GET'>";
                 echo "<tr>";
                 echo "<td> " . $row['course_id'] . "</td>";
                 echo "<td>" . $row['instructor_id'] . "</td>";
                 echo "<td>" . $row['semester'] . "</td>";
                 echo "<td><a href='removeFromCart.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Delete</a></td>";
                 echo "</tr>";
-                echo "</table>";
-                echo "<input type='submit' value='Enroll' id='enroll'></input>";
-                echo "</form>";
+
               }
+              echo "</table>";
+              echo "<input type='submit'  class='btn btn-primary' value='Enroll' id='enroll'></input>";
+              echo "</form>";
           }else {
             echo "<h4>Your cart is empty.</h4>";
           }
@@ -97,6 +109,6 @@ $session_username = $_SESSION['username'];
           ?>
 
     </section>
-
+</div>
 </body>
 </html>

@@ -6,7 +6,7 @@ echo "<nav class='navbar navbar-expand-lg navbar-dark bg-primary'>
        <a class='nav-link' href='#''>Home <span class='sr-only'>(current)</span></a>
      </li>
      <li class='nav-item active'>
-       <a class='nav-link' href='#'>Enroll</a>
+       <a class='nav-link' href='homepage.php'>Enroll</a>
      </li>
      <li class='nav-item active'>
        <a class='nav-link' href='courseHistory.php'>Course History</a>

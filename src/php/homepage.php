@@ -1,18 +1,24 @@
 <?php
 include 'connection.php';
 session_start();
-$session_username = $_SESSION['username'];
+if(isSet($_SESSION['username'])){
+  $session_username = $_SESSION['username'];
+}
+else{
+  header("location:login.html");
+  exit();
+}
+
 ?>
 <html lang="en">
 <head>
     <title>Online Course Registration</title>
     <link type="text/css" rel="stylesheet" href="../css/common.css" />
-      <link type="text/css" rel="stylesheet" href="../css/custom.scss" />
+    <link type="text/css" rel="stylesheet" href="../css/custom.scss" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
 </head>
 <body>
   <?php include 'menu.php'; ?>
@@ -34,7 +40,7 @@ $session_username = $_SESSION['username'];
           <div class="col">
             <div class="form-group">
               <label>Major:</label>
-                <select class="form-control" name="Major">
+                <select class="form-control custom-select" name="Major">
                   <option value="Computer Science"<?= $_REQUEST["Major"] == "Computer Science" ? " selected='selected'" : "" ?>>Computer Science</option>
                   <option value="Mechanical Engineering"<?= $_REQUEST["Major"] == "Mechanical Engineering" ? " selected='selected'" : "" ?>>Mechanical Engineering</option>
                   <option value="itm"<?= $_REQUEST["Major"] == "itm" ? " selected='selected'" : "" ?>>ITM</option>
