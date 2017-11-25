@@ -15,39 +15,11 @@ $session_username = $_SESSION['username'];
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="collapse navbar-collapse">
-   <ul class="navbar-nav mr-auto">
-     <li class="nav-item active">
-       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-     </li>
-     <li class="nav-item active">
-       <a class="nav-link" href="#">Enroll</a>
-     </li>
-     <li class="nav-item active">
-       <a class="nav-link" href="courseHistory.php">Course History</a>
-     </li>
-     <li class="nav-item active">
-       <a class="nav-link" href="dropCourses.php">Drop Course</a>
-     </li>
-     <li class="nav-item active">
-       <a class="nav-link" href="myCart.php">My Cart</a>
-     </li>
-   </ul>
-
-   <ul class="navbar-nav">
-
-       <li class="nav-item active">
-         <a class="nav-link" href="#"> Logout </a>
-       </li>
-     </ul>
- </div>
-</nav>
+  <?php include 'menu.php'; ?>
     <div id="homepage_container" class="container">
       <h2>Online Course Registration</h2>
       <form action="#" method="GET">
         <div class="row">
-
           <div class="col">
             <div class="form-group">
               <label>Degree:</label>
@@ -83,7 +55,6 @@ $session_username = $_SESSION['username'];
           </div>
         </div>
         <button id="search" class="btn btn-primary">Search</button>
-
       </form>
 
 <?php
