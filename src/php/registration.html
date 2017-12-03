@@ -6,69 +6,115 @@
     <link type="text/css" rel="stylesheet" href="../css/common.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../js/registration.js" type="text/javascript"></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="../js/password_strength.js"></script>
+    <script src="../js/jquery-strength.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<body id="login_body">
-      <div id="register_container" class="container">
+<body id="register_body">
+
+  <nav class='navbar navbar-inverse '>
+    <div class='container-fluid'>
+      <div class='navbar-header'>
+        <a class='navbar-brand' href='#'>UTD</a>
+      </div>
+      <ul class='nav navbar-nav'>
+
+          <li><a href='login.html'><span class='glyphicon glyphicon-menu-left'></span></a></li>
+   </div>
+  </nav>
+        <div id="register_container" class="container">
         <h2 class="text-primary">Registration Form</h2></br>
         <form action="registration.php" method="post">
           <div class="form-group">
-            <label class="text font-weight-bold">NetId</label>
-            <input class="form-control" type="text" name="username" placeholder="NetId" id="netId">
+              <label>NetId</label>
+              <input class="form-control" type="text" name="username" placeholder="NetId" id="netId">
           </div>
+
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+              <label>First Name</label>
+              <input class="form-control" type="text" name="fName" placeholder="First Name" id="fName">
+            </div>
+            </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input class="form-control" type="text" name="lName" placeholder="Last Name" id="lName">
+                </div>
+              </div>
+            </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label> Password</label>
+                <input class=" password-input form-control" type="password" name="password" placeholder="Password" id="password">
+              </div>
+            </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+      			      <label>Confirm Password</label>
+                  <input class=" password-input form-control"type="password" name="confirm_password" placeholder="Confirm Password" id="confirm_password">
+                </div>
+              </div>
+            </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                  <label>Major</label>
+                  <select class="form-control" id="major" name="major">
+                    <option value="0">Your Major</option>
+                    <option value="CS">Computer Science</option>
+                    <option value="ITM">ITM</option>
+                    <option value="MSBA">MSBA</option>
+                  </select>
+                </div>
+                </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Degree</label>
+                      <select class="form-control" id="degree" name="degree">
+                        <option value="0">Your Degree</option>
+                        <option value="Graduate">Graduate</option>
+                        <option value="Under-Graduate">Under-Graduate</option>
+                      </select></br>
+                    </div>
+                  </div>
+                </div>
+
           <div class="form-group">
-            <label class="required text font-weight-bold"> Password</label>
-            <input class="form-control" type="password" name="password" placeholder="Password" id="password">
-          </div>
-          <div class="form-group">
-			      <label class="required text font-weight-bold">Confirm Password</label>
-            <input class="form-control"type="password" name="confirm_password" placeholder="Confirm Password" id="confirm_password">
-          </div>
-            <div class="form-group">
-			      <label class="required text font-weight-bold">First Name</label>
-            <input class="form-control" type="text" name="fName" placeholder="First Name" id="fName">
-          </div>
-          <div class="form-group">
-			      <label class="required text font-weight-bold">Last Name</label>
-            <input class="form-control" type="text" name="lName" placeholder="Last Name" id="lName">
-          </div>
-            <div class="form-group">
-            <label class="required text font-weight-bold">Major</label>
-            <select class="form-control" id="major" name="major">
-              <option value="0">Your Major</option>
-              <option value="CS">Computer Science</option>
-              <option value="ITM">ITM</option>
-              <option value="MSBA">MSBA</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="required text font-weight-bold">Degree</label>
-            <select class="form-control" id="degree" name="degree">
-              <option value="0">Your Degree</option>
-              <option value="Graduate">Graduate</option>
-              <option value="Under-Graduate">Under-Graduate</option>
-            </select></br>
-          </div>
-          <div class="form-group">
-      		  <label class="text font-weight-bold">Gender </label>
-      		    <input type="radio" name="gender" value="male" id="male">   <label class="required text font-weight-bold">Male</label>
-              <input type="radio" name="gender" value="female" id="female"> <label class="required text font-weight-bold">Female</label>
+      		  <label>Gender </label>
+      		    <input type="radio" name="gender" value="male" id="male">   <label>Male</label>
+              <input type="radio" name="gender" value="female" id="female"> <label>Female</label>
             </div>
             <div class="form-group">
-            <label class="required text font-weight-bold">Email</label>
+            <label>Email</label>
             <input class="form-control" type="text" name="email" placeholder="Email" id="email">
           </div>
           <div class="form-group">
-			      <label class="required text font-weight-bold">Phone</label>
+			      <label>Phone</label>
             <input class="form-control" type="text" name="phone" placeholder="Phone" id="phone"></br>
           </div>
           <div class="form-group">
-            <input class="btn btn-primary" type="submit" id="validate" >
+            <input class="btn btn-primary  btn-block" type="submit" id="validate" >
           </div>
         </form>
 
       </div>
+
+    	<script>
+    		jQuery(function($) {
+    			$(".password-input").strength();
+    			$(".password-input-image").strength({
+    				templates: {
+        			toggle: '<span class="input-group-addon"><img class="{toggleClass}" title="Show/Hide Password" src="images/checkbox.png" /></span>'
+        		}
+    			});
+    		});
+    	</script>
 </body>
 </html>

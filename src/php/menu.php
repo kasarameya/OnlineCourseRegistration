@@ -15,6 +15,12 @@ else{
         <a class='navbar-brand' href='#'>UTD</a>
       </div>
       <ul class='nav navbar-nav'>
+      <li class='nav-item active'>
+        <a class='nav-link' href='profile.php'>Home <span class='sr-only'>(current)</span></a>
+      </li>
+      <li class='nav-item active'>
+        <a class='nav-link' href='coursebook.php'>CourseBook</a>
+      </li>
         <li class='nav-item active'>
         <a class='nav-link' href='homepage.php'>Enroll</a>
       </li>
@@ -24,9 +30,7 @@ else{
       <li class='nav-item active'>
         <a class='nav-link' href='dropCourses.php'>Drop Course</a>
       </li>
-      <li class='nav-item active'>
-        <a class='nav-link' href='coursebook.php'>CourseBook</a>
-      </li>
+
       <li class='nav-item active'>
         <a class='nav-link' href='myCart.php'>My Cart</a>
       </li>
@@ -36,8 +40,8 @@ else{
       <li class='nav-item active'>
         <a class='nav-link'> Hi, $session_username</a>
       </li>
-        <li><a href='#'><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>
-        <li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
+        <li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span></a></li>
+
       </ul>
     </div>
   </nav>"
