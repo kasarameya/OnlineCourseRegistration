@@ -2,17 +2,38 @@
     width: 550px !important;
     margin-top: 10% !important;
 }
+.container1 {
+    width: 550px !important;
+    margin-top: 1% !important;
+}
+.navbar-inverse {
+    background-color: #644bef !important;
+    border-color: #ffffff !important;
+}
+.navbar-inverse .navbar-nav>.active>a {
+    color: #fff !important;
+    background-color: #5046e2 !important;
+}
 
+.navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+  background-color: black !important;
+}
 #homepage_container{
   width: 900px !important;
   margin-top: 30px !important;
 }
+#register_container{
+  width: 550px !important;
+  margin-top: 30px !important;
+}
+
  #login_body{
     background-image: url("bg.jpg");
     background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
 }
+
 .font-weight-bold {
     font-weight: 700!important;
     color: white;

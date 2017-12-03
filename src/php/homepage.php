@@ -18,8 +18,9 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
+
 <body>
-  <?php include 'menu.php'; ?>
+  <?php include 'menu2.php'; ?>
     <div id="homepage_container" class="container">
       <h2>Online Course Registration</h2>
       <form action="#" method="GET">
@@ -69,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $degree = $_GET["Degree"];
     $sem    = $_GET["Semester"];
 
-    $sql2    = "CALL view_all_courses('$degree','$major','$sem') ";
+    $sql2    = "CALL old_view_courses('$degree','$major','$sem') ";
     $result2 = mysqli_query($conn, $sql2);
 
 
@@ -79,11 +80,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
          <thead class='bg-primary'>
           <tr class='text-white'>
             <th>Course Name</th>
-            <th>Course Id</th>
-            <th>Instructor Id</th>
             <th>Instructor Name</th>
-            <th>Semester</th>
             <th>Availability</th>
+            <th>Days</th>
             <th>Enroll</th>
           </tr>
           </thead>";
@@ -93,19 +92,21 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
             echo "<tr scope='row'>";
             echo "<td> " . $row['course_name'] . "</td>";
-            echo "<td> " . $row['course_id'] . "</td>";
-            echo "<td>" . $row['instructor_id'] . "</td>";
             echo "<td> " . $row['name'] . "</td>";
-            echo "<td>" . $row['semester'] . "</td>";
             echo "<td>" . $row['remaining_seats'] . "</td>";
+            echo "<td>" . $row['class_days'] . "</td>";
             echo "<td> <input type='checkbox' value='$course' name='checkbox1[]'> </td>";
             echo "</tr>";
         }
+
+
         echo "</table>";
         echo "<button id='AddCart'  class='btn btn-primary'>Add to Cart</button>";
         echo "</form>";
 
     }
+
+
 }
 ?>
 </div>
