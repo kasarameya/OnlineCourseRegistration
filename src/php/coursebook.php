@@ -51,9 +51,11 @@ $result = mysqli_query($conn, $query);
  </head>
  <body>
   <?php include 'menu.php'; ?>
-  <div id="homepage_container" class="container">
+  <div id="cr_container" class="container">
+
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
-    <table class="table table-bordered">
+  <br>
+    <table class="table table-hover">
          <thead class='bg-primary'>
           <tr class='text-white'>
             <th>Course Name</th>
@@ -61,7 +63,11 @@ $result = mysqli_query($conn, $query);
             <th>Instructor Id</th>
             <th>Instructor Name</th>
             <th>Semester</th>
+            <th>Days</th>
+            <th>Time</th>
+            <th>Class room</th>
             <th>Availability</th>
+
           </tr>
           </thead>
 
@@ -76,48 +82,52 @@ $result = mysqli_query($conn, $query);
       <td><?php echo $row['instructor_id']; ?></td>
       <td><?php echo $row['name']; ?></td>
       <td><?php echo $row['semester']; ?></td>
+      <td><?php echo  $row['class_days'] ; ?></td>
+      <td><?php echo  $row['class_start_time'] .'-'.$row['class_end_time'] ; ?></td>
+      <td><?php echo $row['class_no']; ?></td>
       <td><?php echo $row['remaining_seats']; ?></td>
+
+
      </tr>
      <?php
      }
      ?>
    </tbody>
     </table>
-
-
     <?php
-
     $limitRow = 8;
     $q="select count(*) as Tcount from cr_course_enrollment";
     $result2 = mysqli_query($conn, $q);
     while($row = mysqli_fetch_array($result2))
     {
       $records=$row['Tcount'];
-
-
     }
     $total_pages=ceil($records/$limitRow);
-    echo $total_pages;
     $start_loop = $page;
     $difference = $total_pages - $page;
-
-
-    $end_loop = $total_pages;
+    if($difference <= 5)
+    {
+     $start_loop = $total_pages - 5;
+    }
+    $end_loop = $start_loop + 4;
+  //  $end_loop = $total_pages;
+  echo "<nav aria-label='Page navigation'>
+        <ul class='pagination'>";
     if($page > 1)
     {
-     echo "<a href='coursebook.php?page=1'>First</a>";
-     echo "<a href='coursebook.php?page=".($page - 1)."'><<</a>";
+     echo "  <li><a href='coursebook.php?page=1'>First</a>  <li>";
+     echo "  <li><a href='coursebook.php?page=".($page - 1)."'><<</a>  <li>";
     }
     for($i=$start_loop; $i<=$end_loop; $i++)
     {
-     echo "<a href='coursebook.php?page=".$i."'>".$i."</a>";
+     echo "  <li><a href='coursebook.php?page=".$i."'>".$i."</a>  <li>";
     }
     if($page <= $end_loop)
     {
-     echo "<a href='coursebook.php?page=".($page + 1)."'>>></a>";
-     echo "<a href='coursebook.php?page=".$total_pages."'>Last</a>";
+     echo "  <li><a href='coursebook.php?page=".($page + 1)."'>>> </a>  <li>";
+     echo "  <li><a href='coursebook.php?page=".$total_pages."'>Last</a>  <li>";
     }
-
+    echo "</ul></nav>";
     ?>
     <script>
     $(document).ready(function(){
