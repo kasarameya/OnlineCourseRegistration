@@ -22,7 +22,7 @@ include 'adminMenu.php';
 <h2>Add Course</h2>
 <div class="form-group">
   <form action="adminAddCourseCode.php" method="post">
-    
+
      <br>
          <?php
      $sql_cname  = "SELECT distinct course_name FROM cr_course";
@@ -119,7 +119,7 @@ echo $option_rooms;
    </select>
     <br/>
     <label>Total Seats</label>
-    <input class="form-control" required type="number" max="60" name="totalSeats" placeholder="Total Seats" id="totalSeats">
+    <input class="form-control" required type="number" max="100" name="totalSeats" placeholder="Total Seats" id="totalSeats">
     <br/>
     <select required name="day1">
       <option value="" disabled selected>Select Day -1</option>

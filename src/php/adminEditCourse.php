@@ -100,11 +100,11 @@ echo $option_rooms;
    </select>
     <br/>
     <label>Total Seats</label>
-    <input class="form-control" required type="number" max="60" name="totalSeats" placeholder="Total Seats" id="totalSeats" value="<?php echo $remaining_seats ;?>">
+    <input class="form-control" required type="number" max="100" name="availableSeats" placeholder="Available Seats" id="availableSeats" value="<?php echo $available_seats ;?>">
     <br/>
     <br/>
-    <label>Available Seats</label>
-    <input class="form-control" disabled type="number" name="availableSeats" placeholder="Available Seats" id="availableSeats" value="<?php echo $available_seats ;?>">
+    <label>Remaining Seats</label>
+    <input class="form-control" disabled type="number"  name="totalSeats" placeholder="Remaining Seats" id="remainingSeats" value="<?php echo $remaining_seats ;?>">
     <br/>
     <select required name="day1">
       <option value="" disabled selected>Select Day -1</option>
@@ -139,8 +139,8 @@ echo $option_rooms;
 <script>
 $(document).ready(function(){
     $("#Edit").click(function(){
-      if ($("#totalSeats").val() < $("#availableSeats").val() ) {
-        alert('Total seats cannot be less than avaiable seats');
+      if ($("#remainingSeats").val() > $("#availableSeats").val() ) {
+        alert('Total seats cannot be less than remaining seats');
           event.preventDefault();
       }
       if ($("#startTiming").val() > $("#endTiming").val() ) {

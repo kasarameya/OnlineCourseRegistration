@@ -35,7 +35,8 @@ $sql_insert_course = "insert into cr_course_enrollment values ('$c_id',
 $insert_result     = mysqli_query($conn, $sql_insert_course);
 
 if ($insert_result) {
-
+  $sql_insert_new_course    = "insert ignore into cr_course values ('$c_id','$c_name','$degree','$branch')";
+  $insert_new_course_result = mysqli_query($conn, $sql_insert_new_course);
     $sql_check_existing_course = "select seats from cr_courses_for_semester where course_id='$c_id' and semester = '$sem'";
     $check_result              = mysqli_query($conn, $sql_check_existing_course);
     if (mysqli_num_rows($check_result) > 0) {
@@ -63,8 +64,6 @@ if ($insert_result) {
             echo "Error: " . mysqli_error($conn);
         }
     }
-    $sql_insert_new_course    = "insert ignore into cr_course values ('$c_id','$c_name','$degree','$branch')";
-    $insert_new_course_result = mysqli_query($conn, $sql_insert_new_course);
 } else {
     echo "<script>
         alert('Cannot add class as Professor is Already teaching this Course in this Semester!');
