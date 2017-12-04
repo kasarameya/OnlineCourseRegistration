@@ -85,7 +85,7 @@ else{
           join cr_course_enrollment b on ( a.course_id=b.course_id and a.semester=b.semester and a.instructor_id=b.instructor_id)
           WHERE b.deleted <> 1 and  cart_id= '$session_username'
           group by a.course_id,a.instructor_id,a.semester";
-      
+
           $result4=mysqli_query($conn, $sql4);
           if (mysqli_num_rows($result4) > 0) {
             echo "  <table class='table'>
@@ -102,7 +102,7 @@ else{
                 echo "<td> " . $row['course_id'] . "</td>";
                 echo "<td>" . $row['instructor_id'] . "</td>";
                 echo "<td>" . $row['semester'] . "</td>";
-                echo "<td><a href='removeFromCart.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Delete</a></td>";
+                echo "<td><a href='removeFromCart.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'><span class='glyphicon glyphicon-trash'></span></a></td>";
                 echo "</tr>";
 
               }

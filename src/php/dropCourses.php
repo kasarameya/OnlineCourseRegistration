@@ -42,7 +42,7 @@ else{
           echo "<td>" . $row['instructor_id'] . "</td>";
           echo "<td>" . $row['name'] . "</td>";
           echo "<td>" . $row['semester'] . "</td>";
-          echo "<td><a href='dropCurrentCourse.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Drop</a></td>";
+          echo "<td><a href='dropCurrentCourse.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'><span class='glyphicon glyphicon-trash'></span></a></td>";
           echo "</tr>";
         }
       echo "</table>";
