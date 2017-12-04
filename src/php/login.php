@@ -1,6 +1,7 @@
 <?php
 include 'connection.php';
 session_start();
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   $usernameData= test_data($_POST["username"]);
