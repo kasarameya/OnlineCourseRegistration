@@ -75,12 +75,25 @@ $userId=$row['user_id'];
           <div class="panel-body">
               <div class="jumbotron">
                 <h3>Hello, <?php echo $name ?></h3>
-                <p>Hi welcome to our aweeesome website
-                Hi welcome to our aweeesome website
-              Hi welcome to our aweeesome website
-            Hi welcome to our aweeesome website
-          Hi welcome to our aweeesome website
-        Hi welcome to our aweeesome website</p>
+                <p>This website helps you in managing your course registration process as well as provides useful information related to the courses provided by the university.
+<br>
+The various features provided are :-
+<br>
+1. User can enroll for courses in a Semester.
+<br>
+2. User can view all the information about the courses provided and search as well as filter from the courses.
+<br>
+3. User can add courses into cart and enroll later.
+<br>
+4. User can delete courses from cart.
+<br>
+5. User can drop an enrolled class.
+<br>
+6. User can view his previous courses.
+<br>
+7. User can edit his profile.
+
+</p>
               </div>
 
           </div>

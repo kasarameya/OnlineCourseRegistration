@@ -45,7 +45,11 @@ else{
                 echo "Error in inserting in cart".mysqli_error($conn);
               }
               }
-              $sql4="SELECT course_id,instructor_id,semester FROM cr_cart WHERE cart_id= '$session_username'";
+              $sql4="select b.course_id,b.instructor_id,b.semester FROM cr_cart a
+              join cr_course_enrollment b on ( a.course_id=b.course_id and a.semester=b.semester and a.instructor_id=b.instructor_id)
+              WHERE b.deleted <> 1 and  cart_id= '$session_username'
+              group by a.course_id,a.instructor_id,a.semester";
+
               $result4=mysqli_query($conn, $sql4);
 
               if (mysqli_num_rows($result4) > 0) {
@@ -77,7 +81,11 @@ else{
 
 
         }else {
-          $sql4="SELECT course_id,instructor_id,semester FROM cr_cart WHERE cart_id= '$session_username'";
+          $sql4="select b.course_id,b.instructor_id,b.semester FROM cr_cart a
+          join cr_course_enrollment b on ( a.course_id=b.course_id and a.semester=b.semester and a.instructor_id=b.instructor_id)
+          WHERE b.deleted <> 1 and  cart_id= '$session_username'
+          group by a.course_id,a.instructor_id,a.semester";
+      
           $result4=mysqli_query($conn, $sql4);
           if (mysqli_num_rows($result4) > 0) {
             echo "  <table class='table'>
