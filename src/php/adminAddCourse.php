@@ -19,8 +19,6 @@ session_start();
     <h2>Add Course</h2>
 
   <form action="adminAddCourseCode.php" method="post">
-
-     <br>
          <?php
      $sql_cname  = "SELECT distinct course_name FROM cr_course";
      $result_cname = mysqli_query($conn, $sql_cname);
@@ -32,25 +30,16 @@ session_start();
      }
      ?>
 
+          <div class="form-group">
+                <label>Course</label>
+               <select class="form-control custom-select" required name="course_name">
+                 <option value="" disabled selected>Select Course Name</option>
+                 <?php echo $option_cname; ?>
+             </select>
+            </div>
 
-    <?php
-        $sql_cname    = "SELECT distinct course_name FROM cr_course";
-        $result_cname = mysqli_query($conn, $sql_cname);
-        if (mysqli_num_rows($result_cname) > 0) {
-            $option_cname = '';
-            while ($row = mysqli_fetch_assoc($result_cname)) {
-                $option_cname .= '<option value = "' . $row['course_name'] . '">' . $row['course_name'] . '</option>';
-            }
-        }
-      ?>
-      <div class="row">
-      <div class="form-group">
-       <select class="form-control custom-select" required name="course_name">
-         <option value="" disabled selected>Select Course Name</option>
-         <?php echo $option_cname; ?>
-     </select>
-    </div>
-    </div>
+
+
   <?php
 $sql    = "SELECT distinct degree FROM cr_course";
 $result = mysqli_query($conn, $sql);
@@ -61,8 +50,10 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 ?>
-<div class="row">
+
+
 <div class="form-group">
+  <label> Degree </label>
   <select class="form-control custom-select" required name="degree">
     <option value="" disabled selected>Select Degree</option>
     <?php
@@ -70,7 +61,7 @@ echo $option;
 ?>
  </select>
 </div>
-</div>
+
 
     <?php
 $sql_branch    = "SELECT distinct branch FROM cr_course";
@@ -82,22 +73,24 @@ if (mysqli_num_rows($result_branch) > 0) {
     }
 }
 ?>
-<div class="row">
+
 <div class="form-group">
+    <label> Branch </label>
     <select class="form-control custom-select" required name="branch">
       <option value="" disabled selected>Select Branch</option>
       <?php echo $option_branch; ?>
   </select>
 </div>
-</div>
-<div class="row">
+
+
 <div class="form-group">
+  <label> Semester </label>
     <select  class="form-control custom-select" required name="semester">
       <option value="" disabled selected>Select Semester</option>
       <option value="Spring18">Spring-18</option>
     </select>
   </div>
-  </div>
+
     <?php
 $sql_instructors    = "SELECT distinct instructor_id FROM cr_instructors";
 $result_instructors = mysqli_query($conn, $sql_instructors);
@@ -108,8 +101,9 @@ if (mysqli_num_rows($result_instructors) > 0) {
     }
 }
 ?>
-<div class="row">
+
 <div class="form-group">
+  <label> Instructor </label>
     <select class="form-control custom-select" required name="instructor_id">
       <option value="" disabled selected>Select Instructor</option>
       <?php
@@ -117,7 +111,7 @@ echo $option_instructors;
 ?>
 </select>
 </div>
-</div>
+
 <?php
 $sql_rooms    = "SELECT distinct class_no FROM cr_course_enrollment";
 $result_rooms = mysqli_query($conn, $sql_rooms);
@@ -128,8 +122,9 @@ if (mysqli_num_rows($result_rooms) > 0) {
     }
 }
 ?>
-<div class="row">
+
 <div class="form-group">
+  <label> Class Room No </label>
 <select class="form-control custom-select" required name="room_num">
   <option value="" disabled selected>Select Class room</option>
   <?php
@@ -137,17 +132,17 @@ echo $option_rooms;
 ?>
   </select>
 </div>
-</div>
-<div class="row">
+
+
 <div class="form-group">
     <label>Total Seats</label>
     <input class="form-control" required type="number" max="100" name="totalSeats" placeholder="Total Seats" id="totalSeats">
   </div>
-  </div>
+
 
   <div class="row">
 
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <div class="form-group">
           <label>Day1</label>
 
@@ -162,7 +157,7 @@ echo $option_rooms;
     </select>
   </div>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-6">
     <div class="form-group">
       <label>Day 2</label>
       <select class="form-control custom-select" required name="day2">
@@ -180,13 +175,13 @@ echo $option_rooms;
 
   <div class="row">
 
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <div class="form-group">
     <label>Start Time</label>
     <input class="form-control" required type="time"  name="startTiming" placeholder="Start Time" id="startTiming">
   </div>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-6">
     <div class="form-group">
     <label>End Time</label>
     <input class="form-control" required type="time"  name="endTiming" placeholder="End Time" id="endTiming">
