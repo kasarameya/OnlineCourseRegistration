@@ -38,6 +38,11 @@ if (mysqli_num_rows($result) > 0) {
       alert('One or many courses has been filled');
         window.location.href='myCart.php';
         </script>";
+      }elseif ($row[0] == 6) {
+            echo "<script>
+      alert('You cannot enroll for more than 3 semesters in a semester');
+        window.location.href='myCart.php';
+        </script>";
         } else {
             echo $row[0];
         }

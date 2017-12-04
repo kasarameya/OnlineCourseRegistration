@@ -19,6 +19,14 @@ if (mysqli_num_rows($delete_result) > 0) {
     and semester='$semester' and instructor_id='$instructor_id'";
         $soft_delete_result = mysqli_query($conn, $sql_soft_del);
         if ($soft_delete_result) {
+          $sql_delete_courses_from_cart = "delete a.* from cr_cart a where a.course_id='$course_id'
+      and a.semester='$semester' and a.instructor_id='$instructor_id'";
+      $soft_delete_cart = mysqli_query($conn, $sql_soft_del);
+      if ($soft_delete_cart) {
+        # code...
+      }else {
+        echo "DB Error".mysqli_error($conn);
+      }
           echo "<script>
           alert('Course deleted Successfully!');
             window.location.href='adminDeletedCourses.php';
