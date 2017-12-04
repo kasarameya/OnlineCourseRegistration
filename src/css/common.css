@@ -1,12 +1,14 @@
 .container {
 
-
+  width: 550px !important;
+  margin-top: 10% !important;
 }
 #login_container{
   width: 550px !important;
   margin-top: 10% !important;
     background-color: #ffffffa8;
 }
+
 .container1 {
     width: 550px !important;
     margin-top: 1% !important;
@@ -14,6 +16,11 @@
 .navbar-inverse {
     background-color: #644bef !important;
     border-color: #ffffff !important;
+}
+
+nav.navbar.navbar-inverse {
+  background-color: #644bef !important;
+  border-color: #ffffff !important;
 }
 .navbar-inverse .navbar-nav>.active>a {
     color: #fff !important;
@@ -36,11 +43,20 @@
   margin-top: 30px !important;
 
 }
+#addCr_container{
+  width: 600px !important;
+  margin-top: 10px !important;
+}
 
 #cr_container{
   width:1000px !important;
   margin-top: 30px !important;
 
+}
+#editAdmin_container{
+  width: 750px !important;
+  margin-top: 10px !important;
+      border: 15px solid #644bef !important;
 }
 #edit_profile_container{
   width: 470px !important;

@@ -1,9 +1,7 @@
 <?php
 include 'connection.php';
 session_start();
-if (isSet($_SESSION['username'])) {
-    $session_username = $_SESSION['username'];
-}
+
 ?>
 <html lang="en">
 <head>
@@ -12,15 +10,14 @@ if (isSet($_SESSION['username'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-</head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
 <body>
-  <section>
-<?php
-include 'adminMenu.php';
-?>
-<h2>Add Course</h2>
-<div class="form-group">
+  <?php include 'adminMenu.php'; ?>
+
+  <div id="homepage_container" class="container">
+    <h2>Add Course</h2>
+
   <form action="adminAddCourseCode.php" method="post">
 
      <br>
@@ -35,13 +32,25 @@ include 'adminMenu.php';
      }
      ?>
 
-       <select required name="course_name">
+
+    <?php
+        $sql_cname    = "SELECT distinct course_name FROM cr_course";
+        $result_cname = mysqli_query($conn, $sql_cname);
+        if (mysqli_num_rows($result_cname) > 0) {
+            $option_cname = '';
+            while ($row = mysqli_fetch_assoc($result_cname)) {
+                $option_cname .= '<option value = "' . $row['course_name'] . '">' . $row['course_name'] . '</option>';
+            }
+        }
+      ?>
+      <div class="row">
+      <div class="form-group">
+       <select class="form-control custom-select" required name="course_name">
          <option value="" disabled selected>Select Course Name</option>
-         <?php
-     echo $option_cname;
-     ?>
-      </select>
-<br>
+         <?php echo $option_cname; ?>
+     </select>
+    </div>
+    </div>
   <?php
 $sql    = "SELECT distinct degree FROM cr_course";
 $result = mysqli_query($conn, $sql);
@@ -52,13 +61,16 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 ?>
-
-  <select required name="degree">
+<div class="row">
+<div class="form-group">
+  <select class="form-control custom-select" required name="degree">
     <option value="" disabled selected>Select Degree</option>
     <?php
 echo $option;
 ?>
  </select>
+</div>
+</div>
 
     <?php
 $sql_branch    = "SELECT distinct branch FROM cr_course";
@@ -70,19 +82,22 @@ if (mysqli_num_rows($result_branch) > 0) {
     }
 }
 ?>
-   <br/>
-    <select required name="branch">
+<div class="row">
+<div class="form-group">
+    <select class="form-control custom-select" required name="branch">
       <option value="" disabled selected>Select Branch</option>
-      <?php
-echo $option_branch;
-?>
-   </select>
-    <br/>
-    <select required name="semester">
+      <?php echo $option_branch; ?>
+  </select>
+</div>
+</div>
+<div class="row">
+<div class="form-group">
+    <select  class="form-control custom-select" required name="semester">
       <option value="" disabled selected>Select Semester</option>
       <option value="Spring18">Spring-18</option>
     </select>
-
+  </div>
+  </div>
     <?php
 $sql_instructors    = "SELECT distinct instructor_id FROM cr_instructors";
 $result_instructors = mysqli_query($conn, $sql_instructors);
@@ -93,35 +108,54 @@ if (mysqli_num_rows($result_instructors) > 0) {
     }
 }
 ?>
-   <br/>
-    <select required name="instructor_id">
+<div class="row">
+<div class="form-group">
+    <select class="form-control custom-select" required name="instructor_id">
       <option value="" disabled selected>Select Instructor</option>
       <?php
 echo $option_instructors;
 ?>
 </select>
+</div>
+</div>
 <?php
 $sql_rooms    = "SELECT distinct class_no FROM cr_course_enrollment";
 $result_rooms = mysqli_query($conn, $sql_rooms);
 if (mysqli_num_rows($result_rooms) > 0) {
-$option_rooms = '';
-while ($row = mysqli_fetch_assoc($result_rooms)) {
-    $option_rooms .= '<option value = "' . $row['class_no'] . '">' . $row['class_no'] . '</option>';
-}
+    $option_rooms = '';
+    while ($row = mysqli_fetch_assoc($result_rooms)) {
+        $option_rooms .= '<option value = "' . $row['class_no'] . '">' . $row['class_no'] . '</option>';
+    }
 }
 ?>
-<br/>
-<select required name="room_num">
+<div class="row">
+<div class="form-group">
+<select class="form-control custom-select" required name="room_num">
   <option value="" disabled selected>Select Class room</option>
   <?php
 echo $option_rooms;
 ?>
-   </select>
-    <br/>
+  </select>
+</div>
+</div>
+<div class="row">
+<div class="form-group">
     <label>Total Seats</label>
+    <input class="form-control" required type="number" max="60" name="totalSeats" placeholder="Total Seats" id="totalSeats">
+  </div>
+  </div>
+
+  <div class="row">
+
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label>Day1</label>
+    <select class="form-control custom-select" required name="day1">
+
     <input class="form-control" required type="number" max="100" name="totalSeats" placeholder="Total Seats" id="totalSeats">
     <br/>
     <select required name="day1">
+
       <option value="" disabled selected>Select Day -1</option>
       <option value="Monday">Monday</option>
       <option value="Tuesday">Tuesday</option>
@@ -129,8 +163,12 @@ echo $option_rooms;
       <option value="Thursday">Thursday</option>
       <option value="Friday">Friday</option>
     </select>
-      <br/><br/>
-      <select required name="day2">
+  </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="form-group">
+      <label>Day 2</label>
+      <select class="form-control custom-select" required name="day2">
         <option value="" disabled selected>Select Day -2</option>
         <option value="Monday">Monday</option>
         <option value="Tuesday">Tuesday</option>
@@ -138,18 +176,31 @@ echo $option_rooms;
         <option value="Thursday">Thursday</option>
         <option value="Friday">Friday</option>
       </select>
-        <br/><br/>
+    </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+      <div class="col-lg-4">
+        <div class="form-group">
     <label>Start Time</label>
     <input class="form-control" required type="time"  name="startTiming" placeholder="Start Time" id="startTiming">
-      <br/><br/>
+  </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="form-group">
     <label>End Time</label>
     <input class="form-control" required type="time"  name="endTiming" placeholder="End Time" id="endTiming">
-    <br/>
+  </div>
+  </div>
+</div>
     <div class="form-group">
       <input class="btn btn-primary" type="submit" id="validate" >
     </div>
 </form>
-</div>
+
 </section>
 </body>
 </html>

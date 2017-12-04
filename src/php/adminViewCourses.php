@@ -1,21 +1,20 @@
+
 <?php
 include 'connection.php';
 session_start();
-$session_username = $_SESSION['username'];
+
 ?>
 <html lang="en">
 <head>
-    <title>Online Course Registration</title>
+    <title>View Courses</title>
+    <link type="text/css" rel="stylesheet" href="../css/common.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-  <?php
-include 'adminMenu.php';
-?>
+  <?php include 'adminMenu.php'; ?>
  <div id="homepage_container" class="container">
       <h2>Online Course Registration</h2>
         <form action="#" method="GET">
