@@ -6,7 +6,14 @@
 #login_container{
   width: 550px !important;
   margin-top: 10% !important;
-    background-color: #ffffffa8;
+}
+a {
+    color: black !important;
+    font-weight: bold !important;
+
+  }
+  label.text {
+    font-weight: bold !important;
 }
 
 .container1 {
@@ -67,11 +74,12 @@ nav.navbar.navbar-inverse {
   margin-top: 30px !important;
 }
  #login_body{
-    background-image: url("bg.jpg");
+    background-image: url("bg1.jpg");
     background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
 }
+
 #profileB{
 
 }

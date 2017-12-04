@@ -39,7 +39,7 @@ if (mysqli_num_rows($del_result) > 0) {
     echo "<td> " . $row['course_id'] . "</td>";
     echo "<td>" . $row['instructor_id'] . "</td>";
     echo "<td>" . $row['semester'] . "</td>";
-    echo "<td><a href='adminCancelDelete.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Enable</a></td>";
+    echo "<td><a href='adminCancelDelete.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'><span class='glyphicon glyphicon-ok'></span></a></td>";
     echo "</tr>";
   }
 }else {

@@ -15,7 +15,7 @@ session_start();
 <body>
   <?php include 'adminMenu.php'; ?>
 
-  <div id="homepage_container" class="container">
+  <div id="editAdmin_container" class="container">
     <h2>Add Course</h2>
 
   <form action="adminAddCourseCode.php" method="post">
@@ -141,7 +141,7 @@ echo $option_rooms;
 <div class="row">
 <div class="form-group">
     <label>Total Seats</label>
-    <input class="form-control" required type="number" max="60" name="totalSeats" placeholder="Total Seats" id="totalSeats">
+    <input class="form-control" required type="number" max="100" name="totalSeats" placeholder="Total Seats" id="totalSeats">
   </div>
   </div>
 
@@ -150,11 +150,8 @@ echo $option_rooms;
       <div class="col-lg-4">
         <div class="form-group">
           <label>Day1</label>
-    <select class="form-control custom-select" required name="day1">
 
-    <input class="form-control" required type="number" max="100" name="totalSeats" placeholder="Total Seats" id="totalSeats">
-    <br/>
-    <select required name="day1">
+    <select class="form-control custom-select" required name="day1">
 
       <option value="" disabled selected>Select Day -1</option>
       <option value="Monday">Monday</option>
