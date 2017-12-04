@@ -49,7 +49,7 @@ if (mysqli_num_rows($del_result) > 0) {
     echo "</tr>";
   }
 }else {
-  echo "Error in getting deleted".mysqli_error($conn);
+  echo "No courses deleted yet!";
 }
 
 ?>

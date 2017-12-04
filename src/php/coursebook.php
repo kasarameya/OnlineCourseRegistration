@@ -28,6 +28,7 @@ b.class_end_time,b.class_days,b.semester
 from cr_course a
 join cr_course_enrollment b on ( a.course_id=b.course_id)
 join cr_instructors c on ( b.instructor_id=c.instructor_id)
+where b.deleted=0
 group by b.course_id,b.instructor_id,b.semester
 limit $start_from , $record_per_page ");
 
