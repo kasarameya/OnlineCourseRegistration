@@ -34,7 +34,7 @@ $(document).ready(function () {
           alert('Incorrect username and password combination');
             window.location.href='adminLogin.html';
         }else if(msg == 1) {
-          window.location.href='adminHome.php';
+          window.location.href='adminViewCourses.php';
         }else {
           alert('Admin does not exists, please register!');
         }

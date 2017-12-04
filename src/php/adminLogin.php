@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $password = $row["password"];
             }
             if ($password === $paswordData) {
+              $_SESSION["admin_username"] = $usernameData;
                 echo 1;
             } else {
                 echo 0;
