@@ -69,7 +69,7 @@ else{
                     echo "<td> " . $row['course_id'] . "</td>";
                     echo "<td>" . $row['instructor_id'] . "</td>";
                     echo "<td>" . $row['semester'] . "</td>";
-                    echo "<td><a href='removeFromCart.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Delete</a></td>";
+                    echo "<td><a href='removeFromCart.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'><span class='glyphicon glyphicon-trash'></span></a></td>";
                     echo "</tr>";
                   }
                   echo "</table>";
