@@ -1,10 +1,49 @@
 .container {
+
+
+}
+#login_container{
+  width: 550px !important;
+  margin-top: 10% !important;
+    background-color: #ffffffa8;
+}
+.container1 {
     width: 550px !important;
-    margin-top: 10% !important;
+    margin-top: 1% !important;
+}
+.navbar-inverse {
+    background-color: #644bef !important;
+    border-color: #ffffff !important;
+}
+.navbar-inverse .navbar-nav>.active>a {
+    color: #fff !important;
+    background-color: #5046e2 !important;
 }
 
+.navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+  background-color: black !important;
+}
 #homepage_container{
   width: 900px !important;
+  margin-top: 30px !important;
+}
+#register_container{
+  width: 700px !important;
+  margin-top: 40px !important;
+}
+#profile_container{
+  width: 900px !important;
+  margin-top: 30px !important;
+
+}
+
+#cr_container{
+  width:1000px !important;
+  margin-top: 30px !important;
+
+}
+#edit_profile_container{
+  width: 470px !important;
   margin-top: 30px !important;
 }
  #login_body{
@@ -12,6 +51,30 @@
     background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
+}
+#profileB{
+
+}
+#Mypic{
+    background-color: #644bef !important;
+}
+.jumbotron {
+    margin-bottom: 0px !important;
+}
+.col-lg-3 {
+    background-color: #644bef !important;
+}
+
+
+div#edit_profile_container {
+    border: 15px solid #644bef;
+    margin-top: 1px !important;
+}
+div#register_container{
+  border: 15px solid #644bef;
+}
+.panel-body {
+    background-color: #644bef !important;
 }
 .font-weight-bold {
     font-weight: 700!important;

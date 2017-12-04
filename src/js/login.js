@@ -34,7 +34,7 @@ $(document).ready(function () {
           alert('Incorrect username and password combination');
             window.location.href='login.html';
         }else if(msg == 1) {
-          window.location.href='homepage.php';
+          window.location.href='profile.php';
         }else {
           alert('User does not exists, please register!');
             window.location.href='registration.html';
