@@ -21,7 +21,13 @@ $session_username = $_SESSION['username'];
 
 
 <?php
-$query = 'select course_id,instructor_id,semester from cr_course_enrollment where deleted = 1';
+$query = 'select b.course_id,c.instructor_id,b.course_name as course_name, c.name as isntructor_name
+,a.semester
+ from cr_course_enrollment a
+join cr_course b on ( a.course_id=b.course_id)
+join cr_instructors c on ( a.instructor_id=c.instructor_id)
+where a.deleted=1
+group by a.course_id,a.instructor_id,a.semester;';
 
 $del_result = mysqli_query($conn,$query);
 if (mysqli_num_rows($del_result) > 0) {
@@ -29,16 +35,16 @@ if (mysqli_num_rows($del_result) > 0) {
   <table class='table'>
    <thead class='bg-primary'>
     <tr class='text-white'>
-      <th>Course Id</th>
-      <th>Instructor Id</th>
+      <th>Course Name</th>
+      <th>Instructor Name</th>
       <th>Semester</th>
       <th>Enable</th>
     </tr>
     </thead>";
   while($row = mysqli_fetch_assoc($del_result)){
     echo "<tr>";
-    echo "<td> " . $row['course_id'] . "</td>";
-    echo "<td>" . $row['instructor_id'] . "</td>";
+    echo "<td> " . $row['course_name'] . "</td>";
+    echo "<td>" . $row['isntructor_name'] . "</td>";
     echo "<td>" . $row['semester'] . "</td>";
     echo "<td><a href='adminCancelDelete.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Enable</a></td>";
     echo "</tr>";
