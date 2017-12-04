@@ -18,6 +18,7 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
+
 <body>
   <?php include 'menu.php'; ?>
     <div id="homepage_container" class="container">
@@ -69,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $degree = $_GET["Degree"];
     $sem    = $_GET["Semester"];
 
-    $sql2    = "CALL view_all_courses('$degree','$major','$sem') ";
+    $sql2    = "CALL old_view_courses('$degree','$major','$sem') ";
     $result2 = mysqli_query($conn, $sql2);
 
 
@@ -101,11 +102,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "<td> <input type='checkbox' value='$course' name='checkbox1[]'> </td>";
             echo "</tr>";
         }
+
+
         echo "</table>";
         echo "<button id='AddCart'  class='btn btn-primary'>Add to Cart</button>";
         echo "</form>";
 
     }
+
+
 }
 ?>
 </div>
