@@ -19,8 +19,6 @@ session_start();
     <h2>Add Course</h2>
 
   <form action="adminAddCourseCode.php" method="post">
-<<<<<<< HEAD
-=======
 
      <br>
          <?php
@@ -33,7 +31,7 @@ session_start();
          }
      }
      ?>
->>>>>>> 83234c96c0b3c6aa7badd5f6a19f6183dd92b171
+
 
     <?php
         $sql_cname    = "SELECT distinct course_name FROM cr_course";
@@ -143,7 +141,6 @@ echo $option_rooms;
 <div class="row">
 <div class="form-group">
     <label>Total Seats</label>
-<<<<<<< HEAD
     <input class="form-control" required type="number" max="60" name="totalSeats" placeholder="Total Seats" id="totalSeats">
   </div>
   </div>
@@ -154,11 +151,11 @@ echo $option_rooms;
         <div class="form-group">
           <label>Day1</label>
     <select class="form-control custom-select" required name="day1">
-=======
+
     <input class="form-control" required type="number" max="100" name="totalSeats" placeholder="Total Seats" id="totalSeats">
     <br/>
     <select required name="day1">
->>>>>>> 83234c96c0b3c6aa7badd5f6a19f6183dd92b171
+
       <option value="" disabled selected>Select Day -1</option>
       <option value="Monday">Monday</option>
       <option value="Tuesday">Tuesday</option>

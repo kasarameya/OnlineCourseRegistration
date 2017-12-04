@@ -18,40 +18,6 @@ session_start();
  <div id="homepage_container" class="container">
       <h2>Online Course Registration</h2>
         <form action="#" method="GET">
-<<<<<<< HEAD
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="form-group">
-              <label>Degree:</label>
-              <select class="form-control" name="Degree">
-                <option value="Graduate">Graduate</option>
-                <option value="UnderGraduate">UnderGraduate</option>
-                <option value="Phd">Phd</option>
-                <option value="All">All</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="form-group">
-              <label>Major:</label>
-                <select class="form-control" name="Major">
-                  <option value="Computer Science"<?= $_REQUEST["Major"] == "Computer Science" ? " selected='selected'" : "" ?>>Computer Science</option>
-                  <option value="Mechanical Engineering"<?= $_REQUEST["Major"] == "Mechanical Engineering" ? " selected='selected'" : "" ?>>Mechanical Engineering</option>
-                  <option value="itm"<?= $_REQUEST["Major"] == "itm" ? " selected='selected'" : "" ?>>ITM</option>
-                  <option value="Electrical Engineering"<?= $_REQUEST["Major"] == "Electrical Engineering" ? " selected='selected'" : "" ?>>Electrical Engineering</option>
-                  <option value="All"<?= $_REQUEST["Major"] == "All" ? " selected='selected'" : "" ?>>All</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="form-group">
-              <label >Semester:</label>
-              <select class="form-control" name="Semester">
-                <option value="Fall17">Fall17</option>
-                  <option value="Spring18">Spring18</option>
-                <option value="ALl">All</option>
-              </select>
-=======
           <div class="row">
             <div class="col-lg-4">
               <div class="form-group">
@@ -96,7 +62,6 @@ session_start();
                   <option value="All" <?= $_REQUEST["Semester"] == "All" ? " selected='selected'" : "" ?>  >All</option>
                 </select>
               </div>
->>>>>>> 83234c96c0b3c6aa7badd5f6a19f6183dd92b171
             </div>
           </div>
         <button id="search" class="btn btn-primary">Search</button>
