@@ -1,28 +1,24 @@
 <?php
 include 'connection.php';
 session_start();
-if(isSet($_SESSION['username'])){
-  $session_username = $_SESSION['username'];
-}
-else{
-  header("location:login.html");
-  exit();
-}
+$session_username = $_SESSION['username'];
 ?>
 <html lang="en">
 <head>
     <title>Online Course Registration</title>
-    <link type="text/css" rel="stylesheet" href="../css/common.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
 </head>
 <body>
-  <?php include 'menu.php'; ?>
-    <div id="homepage_container" class="container">
+  <?php
+include 'adminMenu.php';
+?>
+ <div id="homepage_container" class="container">
       <h2>Online Course Registration</h2>
-      <form action="#" method="GET">
+        <form action="#" method="GET">
         <div class="row">
           <div class="col">
             <div class="form-group">
@@ -31,14 +27,14 @@ else{
                 <option value="Graduate">Graduate</option>
                 <option value="UnderGraduate">UnderGraduate</option>
                 <option value="Phd">Phd</option>
-                <option value="ALl">All</option>
+                <option value="All">All</option>
               </select>
             </div>
           </div>
           <div class="col">
             <div class="form-group">
               <label>Major:</label>
-                <select class="form-control custom-select" name="Major">
+                <select class="form-control" name="Major">
                   <option value="Computer Science"<?= $_REQUEST["Major"] == "Computer Science" ? " selected='selected'" : "" ?>>Computer Science</option>
                   <option value="Mechanical Engineering"<?= $_REQUEST["Major"] == "Mechanical Engineering" ? " selected='selected'" : "" ?>>Mechanical Engineering</option>
                   <option value="itm"<?= $_REQUEST["Major"] == "itm" ? " selected='selected'" : "" ?>>ITM</option>
@@ -61,7 +57,7 @@ else{
         <button id="search" class="btn btn-primary">Search</button>
       </form>
 
-<?php
+      <?php
 $course_id = $instructor_id = $semester = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
@@ -75,18 +71,19 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if (mysqli_num_rows($result2) > 0) {
         echo "<form action='myCart.php' method='POST'>
-        <table class='table'>
-         <thead class='bg-primary'>
-          <tr class='text-white'>
-            <th>Course Name</th>
-            <th>Course Id</th>
-            <th>Instructor Id</th>
-            <th>Instructor Name</th>
-            <th>Semester</th>
-            <th>Availability</th>
-            <th>Enroll</th>
-          </tr>
-          </thead>";
+              <table class='table'>
+               <thead class='bg-primary'>
+                <tr class='text-white'>
+                  <th>Course Name</th>
+                  <th>Course Id</th>
+                  <th>Instructor Id</th>
+                  <th>Instructor Name</th>
+                  <th>Semester</th>
+                  <th>Availability</th>
+                  <th>Delete</th>
+                  <th>Edit</th>
+                </tr>
+                </thead>";
         while ($row = mysqli_fetch_assoc($result2)) {
 
             $course = $row['course_id'] . " " . $inst = $row['instructor_id'] . " " . $row['semester'];
@@ -98,16 +95,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "<td> " . $row['name'] . "</td>";
             echo "<td>" . $row['semester'] . "</td>";
             echo "<td>" . $row['remaining_seats'] . "</td>";
-            echo "<td> <input type='checkbox' value='$course' name='checkbox1[]'> </td>";
+            echo "<td><a href='adminDeleteCourse.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Delete</a></td>";
+            echo "<td><a href='adminEditCourse.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Edit</a></td>";
             echo "</tr>";
         }
         echo "</table>";
-        echo "<button id='AddCart'  class='btn btn-primary'>Add to Cart</button>";
         echo "</form>";
 
     }
 }
 ?>
-</div>
-</body>
+     </div>
+      </body>
 </html>

@@ -1,9 +1,9 @@
 <?php
-include 'connection.php';
-session_start();
-if(isSet($_SESSION['username'])){
-  $session_username = $_SESSION['username'];
-}
+  include 'connection.php';
+  session_start();
+  if(isSet($_SESSION['username'])){
+    $session_username = $_SESSION['username'];
+  }
 else{
   header("location:login.html");
   exit();
