@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
 session_start();
-$session_username = $_SESSION['username'];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $c_name        = test_data($_POST["course_name"]);
     $degree        = test_data($_POST["degree"]);

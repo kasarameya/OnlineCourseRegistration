@@ -10,12 +10,12 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
 <body>
   <?php include 'adminMenu.php'; ?>
 
-  <div id="addCr_container" class="container">
+  <div id="homepage_container" class="container">
     <h2>Add Course</h2>
 
   <form action="adminAddCourseCode.php" method="post">
@@ -136,7 +136,7 @@ echo $option_rooms;
 
       <div class="col-lg-4">
         <div class="form-group">
-<label>Day1</label>
+          <label>Day1</label>
     <select class="form-control custom-select" required name="day1">
       <option value="" disabled selected>Select Day -1</option>
       <option value="Monday">Monday</option>
