@@ -128,6 +128,7 @@ while ($row = mysqli_fetch_assoc($result_rooms)) {
 <div class="row">
   <div class="col-lg-4">
     <label>Total Seats</label>
+<<<<<<< HEAD
   </div>
     <div class="col-lg-6">
 <div class="form-group">
@@ -155,6 +156,15 @@ while ($row = mysqli_fetch_assoc($result_rooms)) {
        <div class="form-group">
          <label>Day1</label>
     <select  class="form-control custom-select" required name="day1">
+=======
+    <input class="form-control" required type="number" max="100" name="availableSeats" placeholder="Available Seats" id="availableSeats" value="<?php echo $available_seats ;?>">
+    <br/>
+    <br/>
+    <label>Remaining Seats</label>
+    <input class="form-control" disabled type="number"  name="totalSeats" placeholder="Remaining Seats" id="remainingSeats" value="<?php echo $remaining_seats ;?>">
+    <br/>
+    <select required name="day1">
+>>>>>>> 83234c96c0b3c6aa7badd5f6a19f6183dd92b171
       <option value="" disabled selected>Select Day -1</option>
       <option value="Monday">Monday</option>
       <option value="Tuesday">Tuesday</option>
@@ -203,8 +213,8 @@ while ($row = mysqli_fetch_assoc($result_rooms)) {
 <script>
 $(document).ready(function(){
     $("#Edit").click(function(){
-      if ($("#totalSeats").val() < $("#availableSeats").val() ) {
-        alert('Total seats cannot be less than avaiable seats');
+      if ($("#remainingSeats").val() > $("#availableSeats").val() ) {
+        alert('Total seats cannot be less than remaining seats');
           event.preventDefault();
       }
       if ($("#startTiming").val() > $("#endTiming").val() ) {

@@ -18,6 +18,7 @@ session_start();
  <div id="homepage_container" class="container">
       <h2>Online Course Registration</h2>
         <form action="#" method="GET">
+<<<<<<< HEAD
         <div class="row">
           <div class="col-lg-4">
             <div class="form-group">
@@ -50,9 +51,54 @@ session_start();
                   <option value="Spring18">Spring18</option>
                 <option value="ALl">All</option>
               </select>
+=======
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>Degree:</label>
+                <select class="form-control custom-select" name="Degree">
+                  <option value="Graduate" <?= $_REQUEST["Degree"] == "Graduate" ? " selected='selected'" : "" ?>>
+                    Graduate
+                  </option>
+                  <option value="UnderGraduate" <?= $_REQUEST["Degree"] == "UnderGraduate" ? " selected='selected'" : "" ?> >
+                    UnderGraduate
+                  </option>
+                  <option value="Phd" <?= $_REQUEST["Degree"] == "Phd" ? " selected='selected'" : "" ?> >
+                    Phd
+                  </option>
+                  <option value="All" <?= $_REQUEST["Degree"] == "All" ? " selected='selected'" : "" ?> >
+                    All
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label>Major:</label>
+                  <select class="form-control custom-select" name="Major">
+                    <option value="Computer Science"<?= $_REQUEST["Major"] == "Computer Science" ? " selected='selected'" : "" ?>>
+                      Computer Science</option>
+                    <option value="Mechanical Engineering"<?= $_REQUEST["Major"] == "Mechanical Engineering" ? " selected='selected'" : "" ?>>Mechanical Engineering</option>
+                    <option value="itm"<?= $_REQUEST["Major"] == "itm" ? " selected='selected'" : "" ?>>ITM</option>
+                    <option value="Electrical Engineering"<?= $_REQUEST["Major"] == "Electrical Engineering" ? " selected='selected'" : "" ?>>Electrical Engineering</option>
+                    <option value="All"<?= $_REQUEST["Major"] == "All" ? " selected='selected'" : "" ?>>All</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label >Semester:</label>
+                <select class="form-control custom-select" name="Semester">
+                  <option value="Fall17" <?= $_REQUEST["Semester"] == "Fall17" ? " selected='selected'" : "" ?> >
+                    Fall17</option>
+                    <option value="Spring18" <?= $_REQUEST["Semester"] == "Spring18" ? " selected='selected'" : "" ?> >
+                      Spring18</option>
+                  <option value="All" <?= $_REQUEST["Semester"] == "All" ? " selected='selected'" : "" ?>  >All</option>
+                </select>
+              </div>
+>>>>>>> 83234c96c0b3c6aa7badd5f6a19f6183dd92b171
             </div>
           </div>
-        </div>
         <button id="search" class="btn btn-primary">Search</button>
       </form>
 
@@ -78,7 +124,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                   <th>Instructor Id</th>
                   <th>Instructor Name</th>
                   <th>Semester</th>
-                  <th>Availability</th>
+                  <th>Available Seats</th>
+                  <th>Total Seats</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Days</th>
                   <th>Delete</th>
                   <th>Edit</th>
                 </tr>
@@ -94,6 +144,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "<td> " . $row['name'] . "</td>";
             echo "<td>" . $row['semester'] . "</td>";
             echo "<td>" . $row['remaining_seats'] . "</td>";
+            echo "<td>" . $row['available_seats'] . "</td>";
+            echo "<td>" . $row['class_start_time'] . "</td>";
+            echo "<td>" . $row['class_end_time'] . "</td>";
+            echo "<td>" . $row['class_days'] . "</td>";
             echo "<td><a href='adminDeleteCourse.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Delete</a></td>";
             echo "<td><a href='adminEditCourse.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Edit</a></td>";
             echo "</tr>";

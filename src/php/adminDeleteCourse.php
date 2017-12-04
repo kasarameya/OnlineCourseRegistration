@@ -19,8 +19,10 @@ if (mysqli_num_rows($delete_result) > 0) {
     and semester='$semester' and instructor_id='$instructor_id'";
         $soft_delete_result = mysqli_query($conn, $sql_soft_del);
         if ($soft_delete_result) {
-          header("location:adminDeletedCourses.php");
-          exit();
+          echo "<script>
+          alert('Course deleted Successfully!');
+            window.location.href='adminDeletedCourses.php';
+            </script>";
         } else {
             echo "Error in updating deleted flag " . mysqli_error($conn);
         }

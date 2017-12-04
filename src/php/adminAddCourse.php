@@ -19,6 +19,21 @@ session_start();
     <h2>Add Course</h2>
 
   <form action="adminAddCourseCode.php" method="post">
+<<<<<<< HEAD
+=======
+
+     <br>
+         <?php
+     $sql_cname  = "SELECT distinct course_name FROM cr_course";
+     $result_cname = mysqli_query($conn, $sql_cname);
+     if (mysqli_num_rows($result_cname) > 0) {
+         $option_cname = '';
+         while ($row = mysqli_fetch_assoc($result_cname)) {
+             $option_cname .= '<option value = "' . $row['course_name'] . '">' . $row['course_name'] . '</option>';
+         }
+     }
+     ?>
+>>>>>>> 83234c96c0b3c6aa7badd5f6a19f6183dd92b171
 
     <?php
         $sql_cname    = "SELECT distinct course_name FROM cr_course";
@@ -128,6 +143,7 @@ echo $option_rooms;
 <div class="row">
 <div class="form-group">
     <label>Total Seats</label>
+<<<<<<< HEAD
     <input class="form-control" required type="number" max="60" name="totalSeats" placeholder="Total Seats" id="totalSeats">
   </div>
   </div>
@@ -138,6 +154,11 @@ echo $option_rooms;
         <div class="form-group">
           <label>Day1</label>
     <select class="form-control custom-select" required name="day1">
+=======
+    <input class="form-control" required type="number" max="100" name="totalSeats" placeholder="Total Seats" id="totalSeats">
+    <br/>
+    <select required name="day1">
+>>>>>>> 83234c96c0b3c6aa7badd5f6a19f6183dd92b171
       <option value="" disabled selected>Select Day -1</option>
       <option value="Monday">Monday</option>
       <option value="Tuesday">Tuesday</option>
