@@ -15,7 +15,7 @@ session_start();
 </head>
 <body>
   <?php include 'adminMenu.php'; ?>
- <div id="homepage_container" class="container">
+  <div id="cr_container" class="container">
       <h2>Online Course Registration</h2>
         <form action="#" method="GET">
           <div class="row">
