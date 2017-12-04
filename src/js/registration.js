@@ -4,7 +4,7 @@ $(document).ready(function() {
                 //Remove all the post-validation notifications
                 $("#pwd_error").remove();
                 // Add the information message notification
-                $("#password").after("<span id='pwd_info'>The password field should be at least 8 characters long and have atleast 1 special character and atleast 1 number</span>");
+                $("#password").after("<div class='alert alert-danger' role='alert' id='pwd_info'>The password should contain  at least 8 characters, 1 special character and 1 number</div>");
             });
 
             $("#password").blur(function() {
@@ -37,7 +37,7 @@ $(document).ready(function() {
                             if (!$("#password").val().match(passwordRegex)) {
                                 varErr = true;
                                 event.preventDefault();
-                                $("#password").after("<span id='pwd_error'>The password field should be at least 8 characters long and have atleast 1 special character and atleast 1 number</span>");
+                                $("#password").after("<span id='pwd_error'>The password should contain  at least 8 characters, 1 special character and 1 number</span>");
                                 $("#pwd_error").addClass("error");
                             }
                         }
