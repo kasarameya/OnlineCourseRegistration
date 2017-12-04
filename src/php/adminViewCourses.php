@@ -15,7 +15,7 @@ session_start();
 </head>
 <body>
   <?php include 'adminMenu.php'; ?>
- <div id="homepage_container" class="container">
+  <div id="cr_container" class="container">
       <h2>Online Course Registration</h2>
         <form action="#" method="GET">
           <div class="row">
@@ -113,8 +113,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo "<td>" . $row['class_start_time'] . "</td>";
             echo "<td>" . $row['class_end_time'] . "</td>";
             echo "<td>" . $row['class_days'] . "</td>";
-            echo "<td><a href='adminDeleteCourse.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Delete</a></td>";
-            echo "<td><a href='adminEditCourse.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'>Edit</a></td>";
+            echo "<td>
+            <a href='adminDeleteCourse.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'><span class='glyphicon glyphicon-trash'></span></a></td>";
+            echo "<td><a href='adminEditCourse.php?course_id=".$row['course_id']."&instructor_id=".$row['instructor_id']."&semester=".$row['semester']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";
             echo "</tr>";
         }
         echo "</table>";

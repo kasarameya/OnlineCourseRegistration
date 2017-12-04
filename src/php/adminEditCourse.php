@@ -1,9 +1,6 @@
 <?php
 include 'connection.php';
 session_start();
-if (isSet($_SESSION['username'])) {
-    $session_username = $_SESSION['username'];
-}
 
 $course_id        = $_GET['course_id'];
 $semester         = $_GET['semester'];
@@ -131,19 +128,23 @@ while ($row = mysqli_fetch_assoc($result_rooms)) {
   </div>
     <div class="col-lg-6">
 <div class="form-group">
-    <input class="form-control" required type="number" max="60" name="totalSeats" placeholder="Total Seats" id="totalSeats" value="<?php echo $remaining_seats ;?>">
-  </div>
+  <input class="form-control" required type="number" max="100" name="availableSeats" placeholder="Available Seats" id="availableSeats" value="<?php echo $available_seats ;?>">
+</div>
 </div>
  </div>
 
+
+
+
+
  <div class="row">
    <div class="col-lg-4">
-    <label>Available Seats</label>
+  <label>Remaining Seats</label>
    </div>
      <div class="col-lg-6">
  <div class="form-group">
+   <input class="form-control" disabled type="number"  name="totalSeats" placeholder="Remaining Seats" id="remainingSeats" value="<?php echo $remaining_seats ;?>">
 
-    <input class="form-control" disabled type="number" name="availableSeats" placeholder="Available Seats" id="availableSeats" value="<?php echo $available_seats ;?>">
   </div>
 </div>
  </div>
@@ -154,22 +155,18 @@ while ($row = mysqli_fetch_assoc($result_rooms)) {
      <div class="col-lg-5">
        <div class="form-group">
          <label>Day1</label>
-    <select  class="form-control custom-select" required name="day1">
-    <input class="form-control" required type="number" max="100" name="availableSeats" placeholder="Available Seats" id="availableSeats" value="<?php echo $available_seats ;?>">
-    <br/>
-    <br/>
-    <label>Remaining Seats</label>
-    <input class="form-control" disabled type="number"  name="totalSeats" placeholder="Remaining Seats" id="remainingSeats" value="<?php echo $remaining_seats ;?>">
-    <br/>
-    <select required name="day1">
+         <select class="form-control custom-select" required name="day1">
 
-      <option value="" disabled selected>Select Day -1</option>
-      <option value="Monday">Monday</option>
-      <option value="Tuesday">Tuesday</option>
-      <option value="Wednesday">Wednesday</option>
-      <option value="Thursday">Thursday</option>
-      <option value="Friday">Friday</option>
-    </select>
+           <option value="" disabled selected>Select Day -1</option>
+           <option value="Monday">Monday</option>
+           <option value="Tuesday">Tuesday</option>
+           <option value="Wednesday">Wednesday</option>
+           <option value="Thursday">Thursday</option>
+           <option value="Friday">Friday</option>
+         </select>
+
+
+
   </div>
   </div>
   <div class="col-lg-5">
