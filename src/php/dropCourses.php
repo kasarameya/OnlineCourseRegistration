@@ -29,8 +29,8 @@ else{
       echo "  <table class='table'>
          <thead class='bg-primary'>
           <tr class='text-white'>
-          <th>Course_id</th>
-          <th>Instructor_id</th>
+          <th>Course Id</th>
+          <th>Instructor Id</th>
           <th>Instructor Name</th>
           <th>Semester</th>
           <th>Drop</th>
